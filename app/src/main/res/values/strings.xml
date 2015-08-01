@@ -1,0 +1,40 @@
+<resources>
+
+    <!-- Settings strings -->
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="pref_sort_order_label">Sort Order</string>
+    <string name="pref_sort_order_default" translatable="false">popularity</string>
+    <string name="pref_sort_order_key" translatable="false">sort_order</string>
+    <string name="pref_sort_order_label_vote" translatable="false">vote</string>
+    <string name="pref_sort_order_vote">Highest Average Votes</string>
+    <string name="pref_sort_order_label_popularity" translatable="false">popularity</string>
+    <string name="pref_sort_order_popularity">Most Popular</string>
+    <string name="content_description_poster">Details about the selected movie.</string>
+
+    <!-- General strings -->
+    <string name="app_name">Popular Movies Stage 1</string>
+    <string name="action_credits">Credits</string>
+    <string name="detail">detail</string>
+    <string name="main">main</string>
+    <string name="title_activity_detail">Detail Activity</string>
+    <string name="title_activity_movie_detail">Movie Detail Activity</string>
+
+    <!-- Credits strings -->
+    <string name="title_activity_credits">Credits</string>
+    <string name="tmdb_logo_content_description">The Movie Database logo, version 7.</string>
+    <string name="udacity_description">Project 1 of the Udacity Android Nanodegree.
+        \n Some parts have been adapted from code available in the \"Developing Android Apps:
+        Fundamentals\" course, licensed under the Apache License, Version 2.0.
+        \n\nImplements the Picasso library for image handling.
+        \n http://square.github.io/picasso/
+        \n\nThis product uses the TMDb API but is not endorsed or certified by TMDb.</string>
+
+    <!-- Placeholder text for messing with layout. -->
+    <string name="placeholder_release_date">Released in Month, 20XX</string>
+    <string name="placeholder_vote_average">Average user score: X.0 / 10</string>
+    <string name="placeholder_overview" translatable="false">Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit.Phasellus pretium libero at velit iaculis, non iaculis
+        felis mattis.Nam volutpat lacinia lobortis.</string>
+
+</resources>

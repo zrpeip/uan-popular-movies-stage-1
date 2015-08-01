@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/meg/AndroidStudioProjects/PopularMoviesStage1/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/home/meg/AndroidStudioProjects/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-9c9055e153302fdf8c15b439054da981046fb2f0.jar" />
+    </item>
+    <item
+        jar="/home/meg/AndroidStudioProjects/PopularMovies1/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/home/meg/AndroidStudioProjects/PopularMovies1/app/build/intermediates/pre-dexed/debug/classes-504291c69796aca80b5d7f6a8c501cf3588a8a5d.jar" />
+    </item>
+    <item
+        jar="/home/meg/AndroidStudioProjects/PopularMoviesStage1/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/home/meg/AndroidStudioProjects/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/classes-f9acbde70fcc54735539d03a255149e2b7af8bb8.jar" />
+    </item>
+    <item
+        jar="/home/meg/AndroidStudioProjects/PopularMoviesStage1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/home/meg/AndroidStudioProjects/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/classes-df9ca91b4a190086f84885f2a3f7ba30e8509e20.jar" />
+    </item>
+    <item
+        jar="/home/meg/AndroidStudioProjects/PopularMovies1/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/home/meg/AndroidStudioProjects/PopularMovies1/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-75c9551165c3276e73523e520049b0a587278373.jar" />
+    </item>
+    <item
+        jar="/home/meg/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.0/7ff0e000d1e27e356567f56c92af3b8ab912636f/picasso-2.5.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7ff0e000d1e27e356567f56c92af3b8ab912636f">
+        <dex dex="/home/meg/AndroidStudioProjects/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/picasso-2.5.0-f5679b82eaa11a0d2494743bb466eb58daed652f.jar" />
+    </item>
+    <item
+        jar="/home/meg/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/home/meg/AndroidStudioProjects/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-1992f9079b4a50d18eb44494992d5ba0c482d927.jar" />
+    </item>
+    <item
+        jar="/home/meg/AndroidStudioProjects/PopularMovies1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/home/meg/AndroidStudioProjects/PopularMovies1/app/build/intermediates/pre-dexed/debug/classes-b095a149a12762b5dc14edf9f278f2e5078d74e8.jar" />
+    </item>
+
+</items>
