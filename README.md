@@ -1,4 +1,4 @@
-# uan-popular-moves-stage-1
+# uan-popular-movies-stage-1
 
 Project 1 for the Udacity Android Nanodegree.
 
