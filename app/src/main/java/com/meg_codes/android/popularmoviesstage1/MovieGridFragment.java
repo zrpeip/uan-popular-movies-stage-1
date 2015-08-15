@@ -1,7 +1,3 @@
-/**
- *
- */
-
 package com.meg_codes.android.popularmoviesstage1;
 
 import android.content.Context;
@@ -9,11 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -46,6 +42,7 @@ import java.util.Comparator;
 public class MovieGridFragment extends Fragment {
     private final String LOG_TAG = MovieGridFragment.class.getSimpleName();
     private ImageAdapter mPosterAdapter;
+    private ArrayList<Movie> mMovieList;
 
     public MovieGridFragment() {
     }
@@ -55,16 +52,9 @@ public class MovieGridFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_movie_grid, container, false);
 
-        // Initialize global ImageAdapter variable.
-        mPosterAdapter = new ImageAdapter(rootView.getContext(), 0, new ArrayList<Movie>());
-
         // Grid view that is linked to mPosterAdapter. Displays movie posters.
         GridView movieView = (GridView) rootView.findViewById(R.id.fragment_moviegrid);
         movieView.setAdapter(mPosterAdapter);
-
-        // Command that queries TMDb API.
-        FetchMovieDataTask fetch = new FetchMovieDataTask();
-        fetch.execute();
 
         // Makes each poster interactive, takes user to a fragment with details.
         // Movie object implements Parcelable, is sent as an intent extra here.
@@ -81,12 +71,38 @@ public class MovieGridFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // Initialize global ImageAdapter variable.
+        mPosterAdapter = new ImageAdapter(getActivity(), 0, new ArrayList<Movie>());
+        if (savedInstanceState == null || !savedInstanceState.containsKey("movies")) {
+            // When there is no saved instance state, query TMDb API.
+            mMovieList = new ArrayList<Movie>();
+            FetchMovieDataTask fetch = new FetchMovieDataTask();
+            fetch.execute();
+        } else {
+            // If there is a saved instance state, use that instead of API query.
+            mMovieList = savedInstanceState.getParcelableArrayList("movies");
+            if (mMovieList != null) {
+
+                for (Movie m : mMovieList) {
+                    mPosterAdapter.add(m);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList("movies", mMovieList);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
-        // For refreshing the list after changing the settings.
-        // Is skipped in first cycle of app.
         if (mPosterAdapter != null) {
-            sortMoviesByPref(mPosterAdapter);
+            sortMoviesByPref(mPosterAdapter, mMovieList);
         }
     }
 
@@ -113,6 +129,10 @@ public class MovieGridFragment extends Fragment {
 
         public long getItemId(int position) {
             return position;
+        }
+
+        public ArrayList<Movie> getMovies() {
+            return movies;
         }
 
         // create a new ImageView for each item referenced by the Adapter
@@ -143,8 +163,12 @@ public class MovieGridFragment extends Fragment {
      * either "sort by most popular (default)" or "sort by highest vote average."
      *
      * @param movies the ImageAdapter of Movie objects to be sorted, must have at least 1 object.
+     *
+     * @param movieList also needs to be sorted, is used to repopulate the image adapter (in the
+     *                  method "onSaveInstanceState" above) if the activity is re-created, for
+     *                  example on screen rotation.
      */
-    public void sortMoviesByPref(ImageAdapter movies) {
+    public void sortMoviesByPref(ImageAdapter movies, ArrayList movieList) {
         // Get user preferences from the Preference Manager.
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
@@ -154,6 +178,7 @@ public class MovieGridFragment extends Fragment {
                 getString(R.string.pref_sort_order_default));
 
         // If the ImageAdapter has at least one object, sort results by either vote or popularity.
+        // Update the Movie ArrayList to make sure state is stored
         if (movies != null && sortCriteria != null) {
             if (sortCriteria.equals("vote")) {
                 movies.sort(new Comparator<Movie>() {
@@ -170,6 +195,8 @@ public class MovieGridFragment extends Fragment {
                     }
                 });
             }
+            movieList.clear();
+            movieList.addAll(movies.getMovies());
         }
     }
 
@@ -310,16 +337,19 @@ public class MovieGridFragment extends Fragment {
          * the Preferences Manager sets the default to "popularity."
          *
          * @param movies the ArrayList of Movie objects returned by doInBackground.
-         *
          */
         @Override
         protected void onPostExecute(ArrayList<Movie> movies) {
-            if (movies.size() > 0) {
-                for (Movie m : movies) {
-                    mPosterAdapter.add(m);
+
+            if (movies != null && mPosterAdapter != null) {
+                if (movies.size() > 0) {
+                    for (Movie m : movies) {
+                        mPosterAdapter.add(m);
+                        mMovieList.add(m);
+                    }
+                    sortMoviesByPref(mPosterAdapter, mMovieList);
                 }
             }
-            sortMoviesByPref(mPosterAdapter);
         }
     }
 }
